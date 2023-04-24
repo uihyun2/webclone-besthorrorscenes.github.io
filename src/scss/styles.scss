@@ -1,0 +1,219 @@
+@import "reset.scss";
+@import "_variables";
+@import "_poster-content";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Work Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: $fixedWidth;
+  height: 100%;
+  padding: 10vh 0 72px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $bg;
+
+  h1,
+  h3,
+  h4,
+  nav,
+  p {
+    width: 70%;
+    font-weight: 300;
+  }
+
+  h1,
+  h3,
+  h4 {
+    color: $red;
+  }
+
+  h1 {
+    font-size: 72px;
+    text-transform: uppercase;
+    font-family: "liberation-sans", sans-serif;
+    font-weight: 400;
+    letter-spacing: 5px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  h4 {
+    font-size: 15px;
+    text-align: justify;
+    text-indent: -0.3rem;
+    margin-bottom: 27px;
+    line-height: 1.2;
+  }
+  nav {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    a {
+      color: $dark-grey;
+      &:visited {
+        color: inherit;
+      }
+      &:hover {
+        color: black;
+      }
+      margin: 0 1em 0.25em 0;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 1px 0 $dark-grey;
+    }
+  }
+  p {
+    font-size: 12px;
+    line-height: 1.2;
+    color: $dark-grey;
+  }
+}
+
+main {
+  background-color: $red;
+  margin-left: $fixedWidth;
+  font-weight: 400;
+  color: white;
+  nav {
+    display: flex;
+    justify-content: center;
+    padding: 60px 72px;
+    gap: 5px;
+    position: fixed;
+    top: 0;
+    left: $fixedWidth;
+    width: calc(100% - $fixedWidth);
+    z-index: 100;
+    background-color: rgba($red, 0.95);
+    border-bottom: 1px solid rgba(#5f5b5bdd, 0.2);
+    font-size: 18px;
+    button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      border-bottom: 1px solid $nav-darkRed;
+      color: $nav-darkRed;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        border-bottom-color: white;
+      }
+    }
+  }
+  .first-movie {
+    padding-top: 250px;
+  }
+  article {
+    background: linear-gradient(
+      to bottom,
+      $red 90%,
+      95%,
+      rgba(0, 0, 0, 0.1) 98%
+    );
+    padding: 130px 72px 72px 72px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    .wrapper {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      .movie-header {
+        padding: 0 0 36px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        h2 {
+          font-family: "Oswald", sans-serif;
+          font-size: 60px;
+        }
+        h3 {
+          align-self: flex-end;
+        }
+      }
+      .poster {
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        .poster-img {
+          width: 100%;
+          box-shadow: 0 15px 10px -3px rgba($dark-grey, 0.3);
+        }
+        @media (min-width: 1500px) {
+          .poster-content {
+            @extend %poster-content;
+            align-items: flex-end;
+            .poster-description {
+              @extend %poster-description;
+            }
+            .poster-rating {
+              @extend %poster-rating;
+            }
+          }
+        }
+
+        @media (max-width: 1499px) {
+          .poster-content {
+            @extend %poster-content;
+            .poster-description {
+              @extend %poster-description;
+            }
+            .poster-rating {
+              @extend %poster-rating;
+            }
+          }
+        }
+
+        .comment {
+          padding: 75px 0 0 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          color: $dark-red;
+          .leave-comment {
+            padding: 0 0 0 0;
+            display: flex;
+            align-items: center;
+            span {
+              padding-right: 5px;
+            }
+            button {
+              background-color: transparent;
+              border: none;
+              outline: none;
+              padding: 0;
+              font-family: inherit;
+              font-size: inherit;
+              border-bottom: 1px solid $dark-red;
+              padding-bottom: 5px;
+              color: $dark-red;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
